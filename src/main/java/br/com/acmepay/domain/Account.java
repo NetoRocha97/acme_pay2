@@ -50,20 +50,26 @@ public class Account {
     public void withdraw(BigDecimal amount) throws BalanceToWithdrawException {
         if (checkBalance(amount)){
             this.balance = this.balance.subtract(amount);
+            this.transactions.add("withdraw successfully" + amount.toString());
         }else {
+            this.transactions.add("withdraw successfully" + amount.toString());
             throw new BalanceToWithdrawException("error withdraw");
         }
-        transactions.add("amount value" + LocalDateTime.now());
+
     }
 
     public void transfer(Account targetAccount, BigDecimal amount) throws BalanceToWithdrawException {
         this.withdraw(amount);
         targetAccount.deposit(amount);
-        transactions.add("transferred value" + LocalDateTime.now());
+        this.transactions.add("transfer successfully" + LocalDateTime.now());
     }
 
-    public void extract(Account account){
-
+    public String extract(){
+        String text = "Extract";
+        for(String transiction : transactions) {
+            text = text + "\n" + transiction;
+        }
+        return text;
     }
 
     private Customer createCustomer(){
