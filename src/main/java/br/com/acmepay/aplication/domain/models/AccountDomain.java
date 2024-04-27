@@ -1,6 +1,6 @@
-package br.com.acmepay.domain;
+package br.com.acmepay.aplication.domain.models;
 
-import br.com.acmepay.exception.BalanceToWithdrawException;
+import br.com.acmepay.aplication.domain.exception.BalanceToWithdrawException;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class AccountDomain {
 
     private Long id;
     private Integer number;
@@ -28,7 +28,7 @@ public class Account {
     private List<String> transactions = new ArrayList<>();
 
 
-    public void create(Account account) {
+    public void create(AccountDomain account) {
         this.setId(account.id);
         this.setCreated_at(LocalDateTime.now());
         this.setUpdated_at(null);
@@ -58,7 +58,7 @@ public class Account {
 
     }
 
-    public void transfer(Account targetAccount, BigDecimal amount) throws BalanceToWithdrawException {
+    public void transfer(AccountDomain targetAccount, BigDecimal amount) throws BalanceToWithdrawException {
         this.withdraw(amount);
         targetAccount.deposit(amount);
         this.transactions.add("transfer successfully" + LocalDateTime.now());

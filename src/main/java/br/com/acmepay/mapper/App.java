@@ -1,10 +1,10 @@
 package br.com.acmepay.mapper;
 
-import br.com.acmepay.domain.Account;
+import br.com.acmepay.aplication.domain.models.AccountDomain;
 
 public class App {
     public static void main( String[] args ) {
-        Account account = new Account();
+        AccountDomain account = new AccountDomain();
         account.setId(1L);
         account.setClose(false);
         account.setAgency(1010);

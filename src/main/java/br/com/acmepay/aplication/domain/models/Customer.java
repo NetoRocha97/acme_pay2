@@ -1,7 +1,7 @@
-package br.com.acmepay.domain;
+package br.com.acmepay.aplication.domain.models;
 
-import br.com.acmepay.exception.ValidationDocumentException;
-import br.com.acmepay.exception.ValidationEmailException;
+import br.com.acmepay.aplication.domain.exception.ValidationDocumentException;
+import br.com.acmepay.aplication.domain.exception.ValidationEmailException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +19,7 @@ public class Customer {
     private String email;
     private String phone;
     private String document;
-    private List<Account> accounts;
+    private List<AccountDomain> accounts;
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
     private List<Customer> customers;
@@ -29,7 +29,7 @@ public class Customer {
     public String getEmail() {return email;}
     public String getPhone() {return phone;}
     public String getDocument() {return document;}
-    public List<Account> getAccounts() {return accounts;}
+    public List<AccountDomain> getAccounts() {return accounts;}
     public LocalDateTime getCreated_at() {return created_at;}
     public LocalDateTime getUpdated_at() {return updated_at;}
 
